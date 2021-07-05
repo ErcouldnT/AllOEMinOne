@@ -81,7 +81,7 @@
       await mediamarkt(searchTerm);
       await teknobiyotik(searchTerm);
       await teknosa(searchTerm);
-      await vatanbilgisayar(searchTerm);
+      // await vatanbilgisayar(searchTerm);
       await hepsiburada(searchTerm);
     };
 	};
