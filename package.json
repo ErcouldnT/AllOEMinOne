@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "nodemon server",
     "start": "node server",
-    "preview": "cd client && npm run build && cd .. && node server",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+    "preview": "cd client && npm run build && cd .. && node server"
   },
   "repository": {
     "type": "git",

@@ -19,6 +19,7 @@ const client = path.resolve('client', 'build');
 app.use(cors());
 app.use(express.static(client));
 
+// TODO: make thoose a single url using URL Params after testing
 app.get('/api/hepsiburada/:search', async (req, res, next) => {
   try {
     const { search } = req.params;
