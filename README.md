@@ -1,2 +1,2 @@
 # AllOEMinOne
-TRdePCdizenZengindir
+Find a cheapest OEM in Turkey in lightning speed. 
