@@ -7,9 +7,8 @@
   },
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server",
-    "start": "node server",
-    "preview": "cd client && npm run build && cd .. && node server"
+    "dev": "cd client && npm run build && cd .. && nodemon server",
+    "start": "node server"
   },
   "repository": {
     "type": "git",

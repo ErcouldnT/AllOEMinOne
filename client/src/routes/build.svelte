@@ -4,9 +4,9 @@
   console.log($build);
 </script>
 <svelte:head>
-  <title>Your build</title>
+  <title>AllOEMinOne Sistem</title>
 </svelte:head>
-<h1 class="text-4xl text-center my-8">Your build here:</h1>
+<h1 class="text-4xl text-center my-8">Sistemin:</h1>
 
 <div class="grid gap-4 grid-cols-1">
   {#each $build as product}

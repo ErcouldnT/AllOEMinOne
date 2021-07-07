@@ -81,18 +81,17 @@
       await mediamarkt(searchTerm);
       await teknobiyotik(searchTerm);
       await teknosa(searchTerm);
-      // await vatanbilgisayar(searchTerm);
+      await vatanbilgisayar(searchTerm);
       await hepsiburada(searchTerm);
     };
 	};
 
 </script>
 <svelte:head>
-  <title>Ucuzcu baba</title>
+  <title>AllOEMinOne</title>
 </svelte:head>
-<h1 class="text-4xl text-center my-8">Welcome to PC-part-picker!</h1>
-<p class="text-center m-3">Kısa, öz arayın.</p>
-<p class="text-center m-3 italic">"Ryzen 5 5600X 11GHz 8MB CPU işlemci" için kısaca "ryzen 5600" şeklinde.</p>
+<h1 class="text-4xl text-center my-8">Ne vereyim abime?</h1>
+<p class="text-center m-3 italic">"Ryzen 5 5600X 11GHz 8MB CPU işlemci" için kısaca "ryzen 5600" şeklinde arama yapabilirsiniz.</p>
 
 <form class="flex flex-row justify-center">
   <input class="rounded-md text-lg p-4 border-2 border-gray-200" 
