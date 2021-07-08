@@ -17,16 +17,16 @@
 
 		
 
-		<link rel="modulepreload" href="/./_app/start-0eefd439.js">
-		<link rel="modulepreload" href="/./_app/chunks/vendor-ac1d1b55.js">
-		<link rel="modulepreload" href="/./_app/pages/__layout.svelte-eeb2e09e.js">
-		<link rel="modulepreload" href="/./_app/pages/index.svelte-874ce645.js">
-		<link rel="modulepreload" href="/./_app/chunks/Product-b65d5d20.js">
+		<link rel="modulepreload" href="/./_app/start-9affc978.js">
+		<link rel="modulepreload" href="/./_app/chunks/vendor-3f517aaa.js">
+		<link rel="modulepreload" href="/./_app/pages/__layout.svelte-4ad09cf5.js">
+		<link rel="modulepreload" href="/./_app/pages/index.svelte-66e5a3e0.js">
+		<link rel="modulepreload" href="/./_app/chunks/Product-c8f65cce.js">
 		<link rel="stylesheet" href="/./_app/assets/start-8077b9bf.css">
-		<link rel="stylesheet" href="/./_app/assets/pages/__layout.svelte-9ecc484f.css">
+		<link rel="stylesheet" href="/./_app/assets/pages/__layout.svelte-33e53635.css">
 
 		<script type="module">
-			import { start } from "/./_app/start-0eefd439.js";
+			import { start } from "/./_app/start-9affc978.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":"/."},
@@ -39,8 +39,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/./_app/pages/__layout.svelte-eeb2e09e.js"),
-						import("/./_app/pages/index.svelte-874ce645.js")
+						import("/./_app/pages/__layout.svelte-4ad09cf5.js"),
+						import("/./_app/pages/index.svelte-66e5a3e0.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -63,10 +63,40 @@
 <h1 class="text-4xl text-center my-8">Ne vereyim abime?</h1>
 <p class="text-center m-3 italic">&quot;Ryzen 5 5600X 11GHz 8MB CPU işlemci&quot; için kısaca &quot;ryzen 5600&quot; şeklinde arama yapabilirsiniz.</p>
 
-<form class="flex flex-row justify-center"><input class="rounded-md text-lg p-4 border-2 border-gray-200" type="text" placeholder="Ürün ara">
+<form class="flex flex-row justify-center p-4"><input class="w-auto rounded-md text-lg p-4 border-2 border-gray-200" type="text" placeholder="Ürün ara">
   
-  <button class="items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 
+  <button disabled class="items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 
   px-4 rounded">Go!</button></form>
+
+<div class="flex justify-center items-center p-3"><div class="grid grid-cols-2 md:grid-cols-3 md:gap-5 max-w-md gap-2"><label><input type="checkbox">
+      Amazon
+    </label>
+    <label><input type="checkbox" checked>
+      Hepsiburada
+    </label>
+    <label><input type="checkbox" checked>
+      Sinerji
+    </label>
+    <label><input type="checkbox">
+      İtopya
+    </label>
+    <label><input type="checkbox" checked>
+      Teknobiyotik
+    </label>
+    <label><input type="checkbox" checked>
+      Inventus
+    </label>
+    <label><input type="checkbox" checked>
+      Mediamarkt
+    </label>
+    <label><input type="checkbox" checked>
+      Teknosa
+    </label>
+    <label><input type="checkbox">
+      Vatanbilgisayar
+    </label></div></div>
+
+
 
 <div class="p-6 grid gap-4 grid-cols-1"></div>
 
