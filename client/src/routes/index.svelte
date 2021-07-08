@@ -124,7 +124,7 @@
   <title>AllOEMinOne</title>
 </svelte:head>
 <h1 class="text-4xl text-center my-8">Ne vereyim abime?</h1>
-<p class="text-center m-3 italic">"Ryzen 5 5600X 11GHz 8MB CPU işlemci" için kısaca "ryzen 5600" şeklinde arama yapabilirsiniz.</p>
+<p class="text-center m-3 italic">Kısaca "ryzen 5600" şeklinde arama yapabilirsin.</p>
 
 <form class="flex flex-row justify-center p-4">
   <input class="w-auto rounded-md text-lg p-4 border-2 border-gray-200" 
