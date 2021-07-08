@@ -137,7 +137,7 @@
 <div class="flex justify-center items-center p-3">
   <div class="grid grid-cols-2 md:grid-cols-3 md:gap-5 max-w-md gap-2">
     <label>
-      <input type=checkbox bind:checked={amCheck}>
+      <input type=checkbox bind:checked={amCheck} disabled>
       Amazon
     </label>
     <label>
@@ -149,7 +149,7 @@
       Sinerji
     </label>
     <label>
-      <input type=checkbox bind:checked={itCheck}>
+      <input type=checkbox bind:checked={itCheck} disabled>
       İtopya
     </label>
     <label>
@@ -169,7 +169,7 @@
       Teknosa
     </label>
     <label>
-      <input type=checkbox bind:checked={vbCheck}>
+      <input type=checkbox bind:checked={vbCheck} disabled>
       Vatanbilgisayar
     </label>
   </div>
