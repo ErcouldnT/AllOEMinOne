@@ -3,17 +3,21 @@ const cheerio = require('cheerio');
 const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 // const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker');
-// const RandomUA = require('puppeteer-extra-plugin-anonymize-ua');
+// puppeteer.use(require('puppeteer-extra-plugin-anonymize-ua')());
+// puppeteer.use(require('puppeteer-extra-plugin-block-resources')({
+//   blockedTypes: new Set(['image', 'stylesheet'])
+// }));
 const Selector = require('./Selector');
+
+puppeteer.use(StealthPlugin());
+// puppeteer.use(AdblockerPlugin({ blockTrackers: true }));
 
 // Puppeteer things
 async function hb(search) {
   const products = [];
   try {
     const url = `https://www.hepsiburada.com/ara?q=${search}&siralama=artanfiyat`;
-    puppeteer.use(StealthPlugin());
-    // puppeteer.use(AdblockerPlugin({ blockTrackers: true }));
-    // puppeteer.use(RandomUA());
+    // https://arh.antoinevastel.com/bots/areyouheadless
     const browser = await puppeteer.launch({
       args: [
         '--no-sandbox',
@@ -21,13 +25,24 @@ async function hb(search) {
       ],
       headless: true,
     });
-    const page = await browser.newPage();
-    // eslint-disable-next-line max-len
-    // await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0');
+    const page = (await browser.pages())[0];
+    // const page = await browser.newPage();
+    // await page.setExtraHTTPHeaders({
+    //   "Accept-Language": "tr-TR,tr",
+    // });
+    await page.setUserAgent('Mozilla/5.0 (X11; Linux armv7l) AppleWebKit/537.36 (KHTML, like Gecko) Raspbian Chromium/74.0.3729.157 Chrome/74.0.3729.157 Safari/537.36');
+    // Change it.
+    // await page.setCookie({
+    //   "cf_chl_2": "a69ac508ba4b292",
+    //   "cf_chl_prog": "x8",
+    //   "cf_clearance": "3ce074e8c097fa391db6f60d0be81abadf160066-1625798614-0-150",
+    //   "PHPSESSID": "pta04jeo6kni4jcv2ocpvudv7e",
+    // });
     await page.goto(url);
+    // await page.waitForSelector('ul.product-list', {visible: true});
     const content = await page.content();
-    const $ = cheerio.load(content);
 
+    const $ = cheerio.load(content);
     $('ul.product-list li.search-item').each((i, e) => {
       $element = $(e);
       // console.log($element);
@@ -51,7 +66,7 @@ async function hb(search) {
         }
       }
     });
-    // console.log(products);
+    
     await browser.close();
   } catch (error) {
     // eslint-disable-next-line no-console

@@ -15,8 +15,24 @@ async function amazon(search) {
       ],
       headless: true,
     });
-    const page = await browser.newPage();
-    // await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0');
+    const page = (await browser.pages())[0];
+    // const page = await browser.newPage();
+    await page.setExtraHTTPHeaders({
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+      "accept-encoding": "gzip, deflate, br",
+      "cache-control": "max-age=0",
+      "cookie": "session-id=259-5432169-1580409; i18n-prefs=TRY; csm-hit=tb:FA5ZWEM2YHN3Q76QHMCB+s-FA5ZWEM2YHN3Q76QHMCB|1625795255399&t:1625795255399&adb:adblk_no; ubid-acbtr=258-0018155-9994468; session-token=k5JoI7dFO+bboA1YSjG0c8EIBMOfvgmUzJkdB0EdzhtgircA4iBIRAcE1GUkqY7rHJ/R0L7mwsBB0UKPKXZPLPsfyzhQDjsul3LHinsa3hTjPGeypNEp7RwIjOKeE3JRbVlwTyapWbqOpAt9t72+OxOOQhyW/N/pM5R8ZuTEnehGMF0R+PxoJUSC+xXYGihH1YGWwBwQRrqKKrNFANsCxjddURITnjHxXHu5Tm3O3OAjroGAFoiOCBAhXHmLPTJz; session-id-time=2082758401l",
+      "downlink": "10",
+      "ect": "4g",
+      "rtt": "0",
+      "sec-fetch-dest": "document",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-site": "none",
+      "sec-fetch-user": "?1",
+      "upgrade-insecure-requests": "1",
+      'Accept-Language': 'tr-TR,tr'
+    });
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0');
     await page.goto(url);
     await page.waitForSelector('div.s-main-slot', {visible: true});
     const content = await page.content();

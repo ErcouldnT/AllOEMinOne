@@ -135,7 +135,7 @@
 </form>
 
 <div class="flex justify-center items-center p-3">
-  <div class="grid grid-cols-2 md:grid-cols-3 md:gap-5 max-w-md gap-2">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
     <label class="cursor-pointer">
       <input type=checkbox bind:checked={amCheck}>
       Amazon
@@ -145,16 +145,8 @@
       Hepsiburada
     </label>
     <label class="cursor-pointer">
-      <input type=checkbox bind:checked={sinCheck}>
-      Sinerji
-    </label>
-    <label class="cursor-pointer">
       <input type=checkbox bind:checked={itCheck}>
       İtopya
-    </label>
-    <label class="cursor-pointer">
-      <input type=checkbox bind:checked={tbCheck}>
-      Teknobiyotik
     </label>
     <label class="cursor-pointer">
       <input type=checkbox bind:checked={inCheck}>
@@ -163,6 +155,14 @@
     <label class="cursor-pointer">
       <input type=checkbox bind:checked={mmCheck}>
       Mediamarkt
+    </label>
+    <label class="cursor-pointer">
+      <input type=checkbox bind:checked={sinCheck}>
+      Sinerji
+    </label>
+    <label class="cursor-pointer">
+      <input type=checkbox bind:checked={tbCheck}>
+      Teknobiyotik
     </label>
     <label class="cursor-pointer">
       <input type=checkbox bind:checked={tekCheck}>
