@@ -8,7 +8,6 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 //   blockedTypes: new Set(['image', 'stylesheet'])
 // }));
 const Selector = require('./Selector');
-
 puppeteer.use(StealthPlugin());
 // puppeteer.use(AdblockerPlugin({ blockTrackers: true }));
 
@@ -25,11 +24,11 @@ async function hb(search) {
       ],
       headless: true,
     });
-    const page = (await browser.pages())[0];
-    // const page = await browser.newPage();
-    // await page.setExtraHTTPHeaders({
-    //   "Accept-Language": "tr-TR,tr",
-    // });
+    // const page = (await browser.pages())[0];
+    const page = await browser.newPage();
+    await page.setExtraHTTPHeaders({
+      "Accept-Language": "tr-TR,tr;q=0.8,en-US;q=0.5,en;q=0.3",
+    });
     await page.setUserAgent('Mozilla/5.0 (X11; Linux armv7l) AppleWebKit/537.36 (KHTML, like Gecko) Raspbian Chromium/74.0.3729.157 Chrome/74.0.3729.157 Safari/537.36');
     // Change it.
     // await page.setCookie({
@@ -39,7 +38,7 @@ async function hb(search) {
     //   "PHPSESSID": "pta04jeo6kni4jcv2ocpvudv7e",
     // });
     await page.goto(url);
-    await page.waitForSelector('ul.product-list', {visible: true});
+    // await page.waitForSelector('ul.product-list', {visible: true});
     const content = await page.content();
 
     const $ = cheerio.load(content);

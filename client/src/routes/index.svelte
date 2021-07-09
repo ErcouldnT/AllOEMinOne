@@ -9,13 +9,13 @@
   let time = 0;
   let amCheck = true;
   let itCheck = true;
-  let vbCheck = true;
-  let hbCheck = true;
   let sinCheck = true;
   let tbCheck = true;
   let inCheck = true;
   let mmCheck = true;
   let tekCheck = true;
+  let vbCheck = false;
+  let hbCheck = false;
 
   $: results.sort((a, b) => a.price - b.price);
 
@@ -141,7 +141,7 @@
       Amazon
     </label>
     <label class="cursor-pointer">
-      <input type=checkbox bind:checked={hbCheck}>
+      <input type=checkbox bind:checked={hbCheck} disabled>
       Hepsiburada
     </label>
     <label class="cursor-pointer">
@@ -169,7 +169,7 @@
       Teknosa
     </label>
     <label class="cursor-pointer">
-      <input type=checkbox bind:checked={vbCheck}>
+      <input type=checkbox bind:checked={vbCheck} disabled>
       Vatanbilgisayar
     </label>
   </div>
