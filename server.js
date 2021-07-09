@@ -4,6 +4,8 @@ const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
 
+process.setMaxListeners(Infinity);
+
 const hb = require('./module/hepsiburada');
 const amazon = require('./module/amazon');
 const inventus = require('./module/inventus');

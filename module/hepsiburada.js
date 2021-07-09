@@ -17,7 +17,9 @@ async function hb(search) {
     const browser = await puppeteer.launch({
       args: [
         '--no-sandbox',
+        '--lang=tr-TR,tr',
       ],
+      headless: true,
     });
     const page = await browser.newPage();
     // eslint-disable-next-line max-len

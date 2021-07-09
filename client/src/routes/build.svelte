@@ -1,7 +1,8 @@
 <script>
   import { build } from '../stores/build';
   import Product from '../components/Product.svelte';
-  console.log($build);
+  
+  let total;
 </script>
 <svelte:head>
   <title>AllOEMinOne Sistem</title>

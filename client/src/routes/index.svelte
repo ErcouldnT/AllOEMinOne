@@ -7,9 +7,9 @@
   let loadingText = '';
   let maxPrice = '';
   let time = 0;
-  let amCheck = false;
-  let itCheck = false;
-  let vbCheck = false;
+  let amCheck = true;
+  let itCheck = true;
+  let vbCheck = true;
   let hbCheck = true;
   let sinCheck = true;
   let tbCheck = true;
@@ -136,40 +136,40 @@
 
 <div class="flex justify-center items-center p-3">
   <div class="grid grid-cols-2 md:grid-cols-3 md:gap-5 max-w-md gap-2">
-    <label>
-      <input type=checkbox bind:checked={amCheck} disabled>
+    <label class="cursor-pointer">
+      <input type=checkbox bind:checked={amCheck}>
       Amazon
     </label>
-    <label>
+    <label class="cursor-pointer">
       <input type=checkbox bind:checked={hbCheck}>
       Hepsiburada
     </label>
-    <label>
+    <label class="cursor-pointer">
       <input type=checkbox bind:checked={sinCheck}>
       Sinerji
     </label>
-    <label>
-      <input type=checkbox bind:checked={itCheck} disabled>
+    <label class="cursor-pointer">
+      <input type=checkbox bind:checked={itCheck}>
       İtopya
     </label>
-    <label>
+    <label class="cursor-pointer">
       <input type=checkbox bind:checked={tbCheck}>
       Teknobiyotik
     </label>
-    <label>
+    <label class="cursor-pointer">
       <input type=checkbox bind:checked={inCheck}>
       Inventus
     </label>
-    <label>
+    <label class="cursor-pointer">
       <input type=checkbox bind:checked={mmCheck}>
       Mediamarkt
     </label>
-    <label>
+    <label class="cursor-pointer">
       <input type=checkbox bind:checked={tekCheck}>
       Teknosa
     </label>
-    <label>
-      <input type=checkbox bind:checked={vbCheck} disabled>
+    <label class="cursor-pointer">
+      <input type=checkbox bind:checked={vbCheck}>
       Vatanbilgisayar
     </label>
   </div>

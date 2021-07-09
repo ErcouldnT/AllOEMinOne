@@ -1,31 +1,27 @@
-/* eslint-disable no-undef */
-const axios = require('axios');
 const cheerio = require('cheerio');
+const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 const Selector = require('./Selector');
 
-// Axios things
-const getPage = async (url) => {
-  try {
-    const { data } = await axios.get(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0'
-      }
-    });
-    return data;
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(error);
-  }
-};
-
-// Cheerio things
-const amazon = async (search) => {
+async function amazon(search) {
+  const products = [];
   try {
     const url = `https://www.amazon.com.tr/s?k=${search}`;
-    // TODO: use your own sorter for results
-    const products = [];
-    const data = await getPage(url);
-    const $ = cheerio.load(data);
+    puppeteer.use(StealthPlugin());
+    const browser = await puppeteer.launch({
+      args: [
+        '--no-sandbox',
+        '--lang=tr-TR,tr',
+      ],
+      headless: true,
+    });
+    const page = await browser.newPage();
+    // await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0');
+    await page.goto(url);
+    await page.waitForSelector('div.s-main-slot', {visible: true});
+    const content = await page.content();
+
+    const $ = cheerio.load(content);
     $('div.s-main-slot div.s-result-item').each((i, e) => {
       $element = $(e);
       const $price = $element.find('span.a-offscreen').text().trim();
@@ -45,12 +41,12 @@ const amazon = async (search) => {
         }
       }
     });
-    return products;
-    // .sort((a, b) => a.price - b.price);
+
+    await browser.close();
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.log(error);
   }
-};
+  return products.sort((a, b) => a.price - b.price);
+}
 
 module.exports = amazon;

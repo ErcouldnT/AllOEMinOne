@@ -1,13 +1,12 @@
 <svelte:head>
   <title>AllOEMinOne Hakkında</title>
 </svelte:head>
-<h2 class="text-5xl text-center my-10">v0.1.1</h2>
-<p class="text-center line-through">Amazon</p>
-<p class="text-center">Hepsiburada</p>
-<p class="text-center">Sinerji</p>
-<p class="text-center">Inventus</p>
-<p class="text-center">Mediamarkt</p>
-<p class="text-center">Teknobiyotik</p>
-<p class="text-center">Teknosa</p>
-<p class="text-center line-through">İtopya</p>
-<p class="text-center line-through">Vatanbilgisayar</p>
+<h1 class="text-4xl text-center my-8">Nasıl çalışır?</h1>
+<div class="flex justify-center items-center">
+  <p class="text-center max-w-md">
+    Seçtiğiniz sitelerde anlık arama yaparak
+    sadece aradığınız kelimeleri içeren sonuçları
+    fiyatına göre listeler.
+  </p>
+</div>
+

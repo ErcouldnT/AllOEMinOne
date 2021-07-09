@@ -1,24 +1,27 @@
-const axios = require('axios');
 const cheerio = require('cheerio');
+const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 const Selector = require('./Selector');
 
-// Axios things
-const getPage = async (url) => {
-  try {
-    const { data } = await axios.get(url);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-// Cheerio things
-const itopya = async (search) => {
+async function itopya(search) {
+  const products = [];
   try {
     const url = `https://www.itopya.com/arama/?o=far&a=${search}`;
-    const products = [];
-    const data = await getPage(url);
-    const $ = cheerio.load(data);
+    puppeteer.use(StealthPlugin());
+    const browser = await puppeteer.launch({
+      args: [
+        '--no-sandbox',
+        '--lang=tr-TR,tr',
+      ],
+      headless: true,
+    });
+    const page = await browser.newPage();
+    // await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0');
+    await page.goto(url);
+    await page.waitForSelector('div.featured-products', {visible: true});
+    const content = await page.content();
+
+    const $ = cheerio.load(content);
     $('div.featured-products div.product').each((i, e) => {
       const $element = $(e);
       const $price = $element.find('div.product-info div div.new').text().trim();
@@ -38,10 +41,12 @@ const itopya = async (search) => {
         }
       }
     });
-    return products.sort((a, b) => a.price - b.price);
+
+    await browser.close();
   } catch (error) {
     console.log(error);
   }
-};
+  return products.sort((a, b) => a.price - b.price);
+}
 
 module.exports = itopya;
