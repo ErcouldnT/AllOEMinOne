@@ -39,7 +39,7 @@ async function hb(search) {
     //   "PHPSESSID": "pta04jeo6kni4jcv2ocpvudv7e",
     // });
     await page.goto(url);
-    // await page.waitForSelector('ul.product-list', {visible: true});
+    await page.waitForSelector('ul.product-list', {visible: true});
     const content = await page.content();
 
     const $ = cheerio.load(content);
