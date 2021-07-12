@@ -16,10 +16,18 @@
   let inCheck = true;
   let mmCheck = true;
   let tekCheck = true;
+  let qpCheck = true;
   let vbCheck = false;
   let hbCheck = false;
 
   $: results.sort((a, b) => a.price - b.price);
+
+  const qp = async (search) => {
+    const url = `/api/qp/${search}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    results = results.concat(data);
+  };
 
   const amazon = async (search) => {
     const url = `/api/amazon/${search}`;
@@ -107,6 +115,10 @@
         loadingText = "Mediamarkt'ı arıyorum...";
         await mediamarkt(searchTerm);
       }
+      if (qpCheck) {
+        loadingText = "Qp'yi arıyorum...";
+        await qp(searchTerm);
+      }
       if (tbCheck) {
         loadingText = "Teknobiyotik'i arıyorum...";
         await teknobiyotik(searchTerm);
@@ -172,6 +184,10 @@
     <label class="cursor-pointer">
       <input type=checkbox bind:checked={mmCheck}>
       Mediamarkt
+    </label>
+    <label class="cursor-pointer">
+      <input type=checkbox bind:checked={qpCheck}>
+      Qp
     </label>
     <label class="cursor-pointer">
       <input type=checkbox bind:checked={sinCheck}>

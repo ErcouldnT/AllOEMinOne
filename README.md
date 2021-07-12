@@ -22,7 +22,8 @@ SvelteKit \
 Tailwind CSS
 
 ### Development
-> Nodemon
+> Nodemon \
+> MongoDB Compass
 
 ### Production
 > Heroku \
@@ -30,9 +31,10 @@ Cloudflare \
 MongoDB Atlas
 
 ## What else can be added
-  * [ ] n11, trendyol, incehesap, pttAVM, çiçeksepeti
-  * [ ] gittigidiyor, sahibinden
-  * [ ] aliexpress, banggood, gearbest, ebay
+  * [+] qpbilişim
+  * [-] n11, trendyol, incehesap, pttAVM, çiçeksepeti
+  * [-] gittigidiyor, sahibinden
+  * [-] aliexpress, banggood, gearbest, ebay
 
 ## Link to recent app
 > https://bul.erkuttekoglu.com \

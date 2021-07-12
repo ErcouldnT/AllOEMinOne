@@ -15,6 +15,7 @@ const sinerji = require('./module/sinerji');
 const teknobiyotik = require('./module/teknobiyotik');
 const teknosa = require('./module/teknosa');
 const vatanbilgisayar = require('./module/vatanbilgisayar');
+const qp = require('./module/qp');
 
 const client = path.resolve('client', 'build');
 
@@ -26,6 +27,16 @@ app.get('/api/hepsiburada/:search', async (req, res, next) => {
   try {
     const { search } = req.params;
     const results = await hb(search);
+    res.json(results);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get('/api/qp/:search', async (req, res, next) => {
+  try {
+    const { search } = req.params;
+    const results = await qp(search);
     res.json(results);
   } catch (error) {
     next(error);
