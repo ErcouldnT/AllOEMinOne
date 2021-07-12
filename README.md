@@ -31,7 +31,7 @@ Cloudflare \
 MongoDB Atlas
 
 ## What else can be added
-  * [*] qpbilişim
+  * [x] qpbilişim
   * [ ] n11, trendyol, incehesap, pttAVM, çiçeksepeti
   * [ ] gittigidiyor, sahibinden
   * [ ] aliexpress, banggood, gearbest, ebay
