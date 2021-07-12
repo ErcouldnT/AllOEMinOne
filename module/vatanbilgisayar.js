@@ -7,7 +7,7 @@ puppeteer.use(StealthPlugin());
 async function vatanbilgisayar(search) {
   const products = [];
   try {
-    const url = `https://www.vatanbilgisayar.com/arama/${search}/?srt=UP`;
+    const url = `https://www.vatanbilgisayar.com/arama/${search}`;
     const browser = await puppeteer.launch({
       args: [
         '--no-sandbox',

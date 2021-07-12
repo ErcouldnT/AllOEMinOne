@@ -19,7 +19,7 @@ const getPage = async (url) => {
 // Cheerio things
 const teknobiyotik = async (search) => {
   try {
-    const url = `https://www.teknobiyotik.com/catalogsearch/result/index/?dir=asc&order=price&q=${search}`;
+    const url = `https://www.teknobiyotik.com/catalogsearch/result/?q=${search}`;
     const products = [];
     const data = await getPage(url);
     const $ = cheerio.load(data);

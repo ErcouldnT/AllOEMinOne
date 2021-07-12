@@ -19,7 +19,7 @@ const getPage = async (url) => {
 // Cheerio things
 const teknosa = async (search) => {
   try {
-    const url = `https://www.teknosa.com/arama/?sort=price-asc&q=${search}`;
+    const url = `https://www.teknosa.com/arama/?s=${search}`;
     const products = [];
     const data = await getPage(url);
     const $ = cheerio.load(data);

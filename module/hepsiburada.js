@@ -15,7 +15,7 @@ puppeteer.use(StealthPlugin());
 async function hb(search) {
   const products = [];
   try {
-    const url = `https://www.hepsiburada.com/ara?q=${search}&siralama=artanfiyat`;
+    const url = `https://www.hepsiburada.com/ara?q=${search}`;
     // https://arh.antoinevastel.com/bots/areyouheadless
     const browser = await puppeteer.launch({
       args: [
