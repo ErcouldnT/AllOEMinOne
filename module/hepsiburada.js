@@ -54,7 +54,7 @@ async function hb(search) {
         const title = $element.find('h3.product-title').attr('title').trim();
         const isTitleValid = Selector(title, search);
 
-        if (isTitleValid !== false) {
+        if (isTitleValid) {
           const product = {
             title,
             price: $price.split(',')[0].replace('.', ''),

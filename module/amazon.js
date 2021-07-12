@@ -45,7 +45,7 @@ async function amazon(search) {
         const title = $element.find('span.a-size-base-plus').text().trim();
         const isTitleValid = Selector(title, search);
 
-        if (isTitleValid !== false) {
+        if (isTitleValid) {
           const product = {
             title,
             price: $price.split('TL')[0].trim().split(',')[0].replace('.', ''),

@@ -26,7 +26,7 @@ const qp = async (search) => {
         const title = $element.find('a.product-item-link').text().trim();
         const isTitleValid = Selector(title, search);
 
-        if (isTitleValid !== false) {
+        if (isTitleValid) {
           const product = {
             title,
             price: $price.split(",")[0].replace(".", ""),

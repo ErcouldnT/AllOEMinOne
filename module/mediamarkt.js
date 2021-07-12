@@ -1,8 +1,7 @@
 const axios = require('axios');
-const cheerio = require('cheerio');
 const Selector = require('./Selector');
 
-// Axios things
+// Get data
 const getPage = async (url) => {
   try {
     const { data } = await axios.get(url, {
@@ -16,36 +15,41 @@ const getPage = async (url) => {
   }
 };
 
-// Cheerio things
+// Make it understandable
 const mediamarkt = async (search) => {
   try {
-    const url = `https://www.mediamarkt.com.tr/tr/search.html?query=${search}&searchProfile=onlineshop&channel=mmtrtr`;
+    const url = `https://www.mediamarkt.com.tr/FACT-Finder/Suggest.ff?searchProfile=onlineshop&channel=mmtrtr&query=${search}`;
     const products = [];
     const data = await getPage(url);
-    const $ = cheerio.load(data);
-    $('ul.products-list li div.product-wrapper').each((i, e) => {
-      $element = $(e);
-      const $price = $element.find('div.price').text().trim();
-      if ($price) {
-        const title = $element.find('div.content h2 a').text().trim();
-        const isTitleValid = Selector(title, search);
+    const allProducts = data.suggestions;
+    // console.log(products);
 
-        if (isTitleValid !== false) {
+    for (let i = 0; i < allProducts.length; i++) {
+      const e = allProducts[i];
+      const price = e.attributes.currentprice;
+      if (price) {
+        const title = e.name.trim();
+        const isTitleValid = Selector(title, search);
+        if (isTitleValid) {
           const product = {
             title,
-            price: $price.slice(0, -2),
-            url: `https://www.mediamarkt.com.tr${$element.find('div.content h2 a').attr('href')}`,
+            price: price.slice(0, -3),
+            url: encodeURI(`https://www.mediamarkt.com.tr/tr/product/_${e.name}-${e.attributes.modelnumber}.html`),
             source: 'mediamarkt'
-          };
+          }
           products.push(product);
         }
       }
-    });
+    }
+    
     return products.sort((a, b) => a.price - b.price);
-    // console.log(products.length);
   } catch (error) {
     console.log(error);
   }
 };
+
+// Promise.all([mediamarkt("logitech g203")]).then(results => {
+//   console.log(results);
+// });
 
 module.exports = mediamarkt;

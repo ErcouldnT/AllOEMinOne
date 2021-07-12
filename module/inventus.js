@@ -26,7 +26,7 @@ const inventus = async (search) => {
         const title = e.model.replace(/<[^>]*>/g, '');
         const isTitleValid = Selector(title, search);
 
-        if (isTitleValid !== false) {
+        if (isTitleValid) {
           const product = {};
           product.title = title;
           product.price = e.listefiyati.split('TL')[0].split(',')[0];

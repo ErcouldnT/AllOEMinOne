@@ -29,7 +29,7 @@ async function itopya(search) {
         const title = $element.find('div div.product-title a').text().trim();
         const isTitleValid = Selector(title, search);
 
-        if (isTitleValid !== false) {
+        if (isTitleValid) {
           const product = {
             title,
             price: $price.split(' ')[0].slice(0, -3).replace('.', ''),

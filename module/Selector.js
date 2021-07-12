@@ -10,6 +10,7 @@ function Selector(title, search) {
       return false;
     }
   }
+  return true;
 }
 
 // const title1 = 'Ryzen 5 3600';

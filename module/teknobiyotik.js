@@ -30,7 +30,7 @@ const teknobiyotik = async (search) => {
         const title = $element.find('h3.product-name a').attr('title').trim();
         const isTitleValid = Selector(title, search);
 
-        if (isTitleValid !== false) {
+        if (isTitleValid) {
           const product = {
             title,
             price: $price.split('\n')[2].split('₺')[0].trim().split(',')[0].replace('.', ''),

@@ -26,7 +26,7 @@ const sinerji = async (search) => {
         const title = $element.find('article div.title a').text().trim();
         const isTitleValid = Selector(title, search);
 
-        if (isTitleValid !== false) {
+        if (isTitleValid) {
           const product = {
             title,
             price: $price.split('\n')[1].replace('.', ''),

@@ -33,7 +33,7 @@ async function vatanbilgisayar(search) {
         const title = $element.find('div.product-list__product-name').text().trim();
         const isTitleValid = Selector(title, search);
 
-        if (isTitleValid !== false) {
+        if (isTitleValid) {
           const product = {
             title,
             price: $price.replace(' ,', ',').split(' ')[0].split(',')[0].replace('.', ''),
