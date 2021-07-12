@@ -4,6 +4,8 @@
 
   let results = [];
   let searchTerm = '';
+  let searchInput = '';
+  let isSearching = false;
   let loadingText = '';
   let maxPrice = '';
   let time = 0;
@@ -84,38 +86,53 @@
 
 	const handleClick = async (e) => {
     e.preventDefault();
+    if (isSearching) {
+      alert("Lütfen önceki aramanın tamamlanmasını bekleyin.");
+      return
+    }
+    isSearching = true;
+    searchTerm = searchInput;
     if (searchTerm) {
-      // alert(searchTerm);
       results = [];
       loadingText = 'Hemen ustaya sorup geliyorum abi biraz bekleticem...'
       if (sinCheck) {
+        loadingText = "Sinerji'yi arıyorum...";
         await sinerji(searchTerm);
       }
       if (inCheck) {
+        loadingText = "Inventus'u arıyorum...";
         await inventus(searchTerm);
       }
       if (mmCheck) {
+        loadingText = "Mediamarkt'ı arıyorum...";
         await mediamarkt(searchTerm);
       }
       if (tbCheck) {
+        loadingText = "Teknobiyotik'i arıyorum...";
         await teknobiyotik(searchTerm);
       }
       if (tekCheck) {
+        loadingText = "Teknosa'yı arıyorum...";
         await teknosa(searchTerm);
       }
       if (hbCheck) {
+        loadingText = "Hepsiburada'yı arıyorum...";
         await hepsiburada(searchTerm);
       }
       if (vbCheck) {
+        loadingText = "Vatanbilgisayar'ı arıyorum...";
         await vatanbilgisayar(searchTerm);
       }
       if (amCheck) {
+        loadingText = "Amazon'u arıyorum...";
         await amazon(searchTerm);
       }
       if (itCheck) {
+        loadingText = "İtopya'yı arıyorum...";
         await itopya(searchTerm);
       }
       loadingText = results.length > 0 ? `${results.length} adet ${searchTerm.trim()} var abi buyur:` : 'Abime onu vermiyim.';
+      isSearching = false;
     };
 	};
 
@@ -128,9 +145,9 @@
 
 <form class="flex flex-row justify-center p-4">
   <input class="w-auto rounded-md text-lg p-4 border-2 border-gray-200" 
-  type="text" bind:value={searchTerm} placeholder="Ürün ara">
+  type="text" bind:value={searchInput} placeholder="Ürün ara">
   
-  <button on:click={handleClick} disabled={!searchTerm} class="items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 
+  <button on:click={handleClick} disabled={!searchInput} class="items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 
   px-4 rounded">Go!</button>
 </form>
 
