@@ -1,3 +1,6 @@
+// Utf-8 uyumlu regex controller ekle.
+// RTX3060 vs RTX 3060 bug'ını çöz.
+
 function Selector(title, search) {
   title = title.toLowerCase();
   search = search.toLowerCase();

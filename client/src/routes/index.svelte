@@ -1,6 +1,7 @@
 <script>
   import { fade } from 'svelte/transition';
-  import Product from '../components/Product.svelte';
+  import { build } from '../stores/build';
+  import Product from '../lib/Product.svelte';
 
   let results = [];
   let searchTerm = '';
@@ -8,6 +9,7 @@
   let isSearching = false;
   let loadingText = '';
   let maxPrice = '';
+  let lowestPrice = '';
   let time = 0;
   let amCheck = true;
   let itCheck = true;
@@ -209,7 +211,7 @@
 </div>
 
 {#if loadingText}
-  <p transition:fade class="text-center m-5 font-bold text-lg">{loadingText}</p>
+  <p in:fade class="text-center m-5 font-bold text-lg">{loadingText}</p>
 {/if}
 
 <div class="p-6 grid gap-4 grid-cols-1">

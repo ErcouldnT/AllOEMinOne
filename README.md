@@ -30,11 +30,16 @@ Tailwind CSS
 Cloudflare \
 MongoDB Atlas
 
+## Todo
+  * [ ] Crazy product database.
+  * [ ] More beautiful Product div & Search bar.
+  * [ ] System build section which can be shared with a single url.
+
 ## What else can be added
-  * [x] qpbilişim
-  * [ ] n11, trendyol, incehesap, pttAVM, çiçeksepeti
-  * [ ] gittigidiyor, sahibinden
-  * [ ] aliexpress, banggood, gearbest, ebay
+  * [x] Qpbilişim
+  * [ ] n11, Trendyol, İncehesap, pttAVM, Çiçeksepeti
+  * [ ] Gittigidiyor, Sahibinden
+  * [ ] Aliexpress, Banggood, Gearbest, eBay
 
 ## Link to recent app
 > https://bul.erkuttekoglu.com \
