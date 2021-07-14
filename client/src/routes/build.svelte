@@ -4,17 +4,15 @@
   import OEM from '../lib/OEM.svelte';
 
   let total = 0;
-  let totalUpdate = 0;
   
-  $: for (let i = 0; i < $build.length; i++) {
-    const e = $build[i];
-    totalUpdate += Number(e.price);
-  };
+  $: {
+    total = 0;
+    for (let i = 0; i < $build.length; i++) {
+      const e = $build[i];
+      total += Number(e.price);
+    };
+  }
 
-  $: if (total >= 0) {
-    total = totalUpdate;
-    totalUpdate = 0;
-  };
 </script>
 
 <svelte:head>

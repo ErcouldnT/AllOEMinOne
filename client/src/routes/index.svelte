@@ -1,15 +1,18 @@
 <script>
   import { fade } from 'svelte/transition';
+  import { result } from '../stores/result';
   import Product from '../lib/Product.svelte';
 
-  let results = [];
+  let results = $result;
   let searchTerm = '';
   let searchInput = '';
   let isSearching = false;
   let loadingText = '';
+  // let loadingText = results.length > 0 ? `${results.length} adet ${searchTerm.trim()} var abi buyur:` : '';
   let maxPrice = '';
   let lowestPrice = '';
   let time = 0;
+  
   let amCheck = true;
   let itCheck = true;
   let sinCheck = true;
@@ -21,7 +24,10 @@
   let vbCheck = false;
   let hbCheck = false;
 
-  $: results.sort((a, b) => a.price - b.price);
+  $: {
+    $result = results.sort((a, b) => a.price - b.price);
+    console.log($result);
+  }
 
   const qp = async (search) => {
     const url = `/api/qp/${search}`;
@@ -221,7 +227,7 @@
 {/if}
 
 <div class="p-6 grid gap-4 grid-cols-1">
-  {#each results as result}
-    <Product product={result}/>
+  {#each $result as product}
+    <Product product={product}/>
   {/each}
 </div>

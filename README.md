@@ -19,7 +19,8 @@ Mongoose
 > Vite \
 Svelte \
 SvelteKit \
-Tailwind CSS
+Tailwind CSS \
+Nanoid
 
 ### Development
 > Nodemon \
