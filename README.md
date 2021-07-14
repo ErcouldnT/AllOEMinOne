@@ -2,7 +2,7 @@
 Find a cheapest OEM in Turkey at lightning speed. 
 
 ## How it works?
-Just go to https://bul.erkuttekoglu.com and Boom! \
+Just go to https://bul.erkuttekoglu.com and Boom!
 > *Note that it's a free dyno so wait a bit.*
 
 ## Used technologies:
@@ -31,7 +31,7 @@ Cloudflare \
 MongoDB Atlas
 
 ## Todo
-  * [ ] Crazy product database.
+  * [x] Crazy product database.
   * [ ] More beautiful Product div & Search bar.
   * [ ] System build section which can be shared with a single url.
 

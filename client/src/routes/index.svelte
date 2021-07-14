@@ -1,6 +1,5 @@
 <script>
   import { fade } from 'svelte/transition';
-  import { build } from '../stores/build';
   import Product from '../lib/Product.svelte';
 
   let results = [];
@@ -94,6 +93,11 @@
     results = results.concat(data);
   };
 
+  const searchCheck = async (search) => {
+    const url = `/api/search/${search}`;
+    await fetch(url);
+  };
+
 	const handleClick = async (e) => {
     e.preventDefault();
     if (isSearching) {
@@ -104,6 +108,7 @@
     searchTerm = searchInput;
     if (searchTerm) {
       results = [];
+      await searchCheck(searchTerm);
       loadingText = 'Hemen ustaya sorup geliyorum abi biraz bekleticem...'
       if (sinCheck) {
         loadingText = "Sinerji'yi arıyorum...";
@@ -149,11 +154,12 @@
       isSearching = false;
     };
 	};
-
 </script>
+
 <svelte:head>
   <title>AllOEMinOne</title>
 </svelte:head>
+
 <h1 class="text-4xl text-center my-8">Ne vereyim abime?</h1>
 <p class="text-center m-3 italic">Kısaca "ryzen 5600" şeklinde arama yapabilirsin.</p>
 

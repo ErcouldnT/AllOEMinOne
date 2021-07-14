@@ -19,7 +19,7 @@
     "express"
   ],
   "author": "Ercode",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/ErcouldnT/AllOEMinOne/issues"
   },
@@ -30,6 +30,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "mongoose": "^5.13.2",
     "puppeteer-extra": "^3.1.18",
     "puppeteer-extra-plugin-stealth": "^2.7.8"
   },

@@ -23,6 +23,6 @@ flex flex-col items-center z-0" href={product.url}>
   <h3>{product.price} TL</h3>
   <div class="flex gap-10">
     <button on:click={quantityControl} class="font-bold z-10">Miktar</button>
-    <button on:click|once={deleteIt} class="font-bold z-10">Sil</button>
+    <button on:click={deleteIt} class="font-bold z-10">Sil</button>
   </div>
 </a>

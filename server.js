@@ -1,8 +1,21 @@
+const mongoose = require('mongoose');
 const express = require('express');
-const app = express();
 const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
+const app = express();
+
+const { Product } = require('./model/Product');
+const Search = require('./model/Search');
+const Build = require('./model/Build');
+
+mongoose.connect(process.env.MONGO_URI, {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}, () => {
+  console.log('Mongo connected!');
+});
 
 process.setMaxListeners(Infinity);
 
@@ -21,6 +34,31 @@ const client = path.resolve('client', 'build');
 
 app.use(cors());
 app.use(express.static(client));
+
+app.get('/api/search/:search', async (req, res, next) => {
+  try {
+    const { search } = req.params;
+    const searching = search.trim().toLowerCase();
+    const isFound = await Search.findOne({ product: searching });
+
+    if (isFound) {
+      isFound.count = isFound.count += 1;
+      isFound.save();
+    } else {
+      const product = await new Search({
+        product: searching
+      });
+      await product.save();
+    };
+
+    res.sendStatus(200);
+    // res.json({
+    //   message: `Search term '${search}' is added.`
+    // });
+  } catch (error) {
+    next(error);
+  }
+});
 
 // TODO: make thoose a single url using URL Params after testing
 app.get('/api/hepsiburada/:search', async (req, res, next) => {
