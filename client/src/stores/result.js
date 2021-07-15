@@ -1,3 +1,19 @@
 import { writable } from "svelte/store";
 
-export const result = writable([]);
+// Store an Array or Object:
+export const result = writable(
+  typeof localStorage !== 'undefined' ? JSON.parse(
+    localStorage.getItem('result') ? localStorage.getItem('result') : "[]"
+    ) : []
+  );
+// result.subscribe(value => localStorage.setItem('result', JSON.stringify(value)));
+
+// check for localStorage, this won't run on SSR
+if (typeof localStorage !== 'undefined') {
+  result.subscribe(value => localStorage.setItem('result', JSON.stringify(value)));
+};
+
+// Store a String:
+// const stored = localStorage.result;
+// export const result = writable(stored || []);
+// result.subscribe(value => localStorage.result = value);

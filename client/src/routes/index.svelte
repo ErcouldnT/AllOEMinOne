@@ -25,8 +25,10 @@
   let hbCheck = false;
 
   $: {
-    $result = results.sort((a, b) => a.price - b.price);
-    console.log($result);
+    if ($result) {
+      $result = results.sort((a, b) => a.price - b.price);
+      // console.log($result);
+    }
   }
 
   const qp = async (search) => {
