@@ -4,8 +4,8 @@ import { writable } from "svelte/store";
 export const result = writable(
   typeof localStorage !== 'undefined' ? JSON.parse(
     localStorage.getItem('result') ? localStorage.getItem('result') : "[]"
-    ) : []
-  );
+  ) : []
+);
 // result.subscribe(value => localStorage.setItem('result', JSON.stringify(value)));
 
 // check for localStorage, this won't run on SSR

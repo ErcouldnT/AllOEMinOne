@@ -3,6 +3,7 @@
   import { fade } from 'svelte/transition';
   import OEM from '../lib/OEM.svelte';
 
+  let builds = $build;
   let total = 0;
   
   $: {
@@ -11,6 +12,10 @@
       const e = $build[i];
       total += Number(e.price);
     };
+  }
+
+  $: {
+    $build = builds;
   }
 
 </script>
