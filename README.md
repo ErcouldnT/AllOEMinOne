@@ -32,6 +32,7 @@ Cloudflare \
 MongoDB Atlas
 
 ## Todo
+  * [ ] Add product images.
   * [x] Crazy product database.
   * [ ] More beautiful Product div & Search bar.
   * [ ] System build section which can be shared with a single url.

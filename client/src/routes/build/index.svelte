@@ -1,7 +1,7 @@
 <script>
-  import { build } from '../stores/build';
+  import { build } from '../../stores/build';
   import { fade } from 'svelte/transition';
-  import OEM from '../lib/OEM.svelte';
+  import OEM from '../../lib/OEM.svelte';
 
   let builds = $build;
   let total = 0;

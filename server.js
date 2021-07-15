@@ -60,12 +60,34 @@ app.get('/api/search/:search', async (req, res, next) => {
   }
 });
 
+const SaveDB = (array) => {
+  array.forEach(async p => {
+    const isFound = await Product.findOne({ url: p.url });
+    if (isFound) {
+      if (isFound.prices[isFound.prices.length - 1].price !== p.price) {
+        isFound.prices.push({
+          price: p.price
+        });
+        await isFound.save();
+      }
+      return
+    } else {
+      const product = new Product(p);
+      product.prices = {
+        price: p.price
+      };
+      await product.save();
+    }
+  });
+};
+
 // TODO: make thoose a single url using URL Params after testing
 app.get('/api/hepsiburada/:search', async (req, res, next) => {
   try {
     const { search } = req.params;
     const results = await hb(search);
     res.json(results);
+    SaveDB(results);
   } catch (error) {
     next(error);
   }
@@ -76,6 +98,7 @@ app.get('/api/qp/:search', async (req, res, next) => {
     const { search } = req.params;
     const results = await qp(search);
     res.json(results);
+    SaveDB(results);
   } catch (error) {
     next(error);
   }
@@ -86,6 +109,7 @@ app.get('/api/amazon/:search', async (req, res, next) => {
     const { search } = req.params;
     const results = await amazon(search);
     res.json(results);
+    SaveDB(results);
   } catch (error) {
     next(error);
   }
@@ -96,6 +120,7 @@ app.get('/api/inventus/:search', async (req, res, next) => {
     const { search } = req.params;
     const results = await inventus(search);
     res.json(results);
+    SaveDB(results);
   } catch (error) {
     next(error);
   }
@@ -106,6 +131,7 @@ app.get('/api/itopya/:search', async (req, res, next) => {
     const { search } = req.params;
     const results = await itopya(search);
     res.json(results);
+    SaveDB(results);
   } catch (error) {
     next(error);
   }
@@ -116,6 +142,7 @@ app.get('/api/mediamarkt/:search', async (req, res, next) => {
     const { search } = req.params;
     const results = await mediamarkt(search);
     res.json(results);
+    SaveDB(results);
   } catch (error) {
     next(error);
   }
@@ -126,6 +153,7 @@ app.get('/api/sinerji/:search', async (req, res, next) => {
     const { search } = req.params;
     const results = await sinerji(search);
     res.json(results);
+    SaveDB(results);
   } catch (error) {
     next(error);
   }
@@ -136,6 +164,7 @@ app.get('/api/teknobiyotik/:search', async (req, res, next) => {
     const { search } = req.params;
     const results = await teknobiyotik(search);
     res.json(results);
+    SaveDB(results);
   } catch (error) {
     next(error);
   }
@@ -146,6 +175,7 @@ app.get('/api/teknosa/:search', async (req, res, next) => {
     const { search } = req.params;
     const results = await teknosa(search);
     res.json(results);
+    SaveDB(results);
   } catch (error) {
     next(error);
   }
@@ -156,6 +186,7 @@ app.get('/api/vatanbilgisayar/:search', async (req, res, next) => {
     const { search } = req.params;
     const results = await vatanbilgisayar(search);
     res.json(results);
+    SaveDB(results);
   } catch (error) {
     next(error);
   }

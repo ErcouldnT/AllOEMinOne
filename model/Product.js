@@ -1,17 +1,26 @@
 const mongoose = require('mongoose');
 
+const priceSchema = new mongoose.Schema({
+  date: {
+    type: Date,
+    default: Date.now()
+  },
+  price: String  // change this to 'int' later
+});
+
 const productSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true
   },
   prices: {
-    type: String,
+    type: [ priceSchema ],
     required: true
   },
   url: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   img: {
     type: String,
