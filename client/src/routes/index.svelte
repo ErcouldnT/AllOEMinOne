@@ -1,7 +1,7 @@
 <script>
   import { fade } from 'svelte/transition';
   import { result } from '../stores/result';
-  import Product from '../lib/Product.svelte';
+  import Product from '../lib/Finder/Product.svelte';
 
   let results = $result;
   let searchTerm = '';

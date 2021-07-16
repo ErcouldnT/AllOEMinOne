@@ -35,7 +35,7 @@ MongoDB Atlas
   * [ ] Add product images.
   * [x] Crazy product database.
   * [ ] More beautiful Product div & Search bar.
-  * [ ] System build section which can be shared with a single url.
+  * [x] System build section which can be shared with a single url.
 
 ## What else can be added
   * [x] Qpbilişim

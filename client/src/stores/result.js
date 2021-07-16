@@ -17,3 +17,9 @@ if (typeof localStorage !== 'undefined') {
 // const stored = localStorage.result;
 // export const result = writable(stored || []);
 // result.subscribe(value => localStorage.result = value);
+
+
+// import { browser } from '$app/env'
+// import { get } from 'svelte/store'
+
+// const a = writable(browser ? localStorage.get('token') || null : null)

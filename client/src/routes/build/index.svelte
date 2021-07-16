@@ -1,7 +1,7 @@
 <script>
   import { build } from '../../stores/build';
   import { fade } from 'svelte/transition';
-  import OEM from '../../lib/OEM.svelte';
+  import OEM from '../../lib/Build/OEM.svelte';
 
   let builds = $build;
   let total = 0;
@@ -39,8 +39,8 @@
   </div>
 {:else}
   <div in:fade class="flex justify-center items-center p-6">
-    <p class="text-center max-w-md font-bold text-xl">
-      Toplam fiyat: {total} TL
+    <p class="text-center max-w-md text-xl">
+      Toplam: <span class="font-bold">₺{total}</span>
     </p>
   </div>
 {/if}

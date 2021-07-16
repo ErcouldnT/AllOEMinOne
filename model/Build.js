@@ -1,13 +1,50 @@
 const mongoose = require('mongoose');
-const { productSchema } = require('./Product')
+
+const commentSchema = new mongoose.Schema({
+  owner: {
+    type: String,
+    required: true
+  },
+  comment: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now()
+  }
+});
+
+const buildProductSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  price: {
+    type: String,
+    required: true
+  },
+  url: {
+    type: String,
+    required: true
+  },
+  img: {
+    type: String,
+    required: false
+  },
+  source: {
+    type: String,
+    required: true
+  }
+});
 
 const buildSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
   },
-  number: {
-    type: Number,
+  slug: {
+    type: String,
     unique: true,
     required: true
   },
@@ -24,7 +61,7 @@ const buildSchema = new mongoose.Schema({
     default: false
   },
   build: {
-    type: [ productSchema ],
+    type: [ buildProductSchema ],
     required: true
   },
   upvote: {
@@ -36,13 +73,13 @@ const buildSchema = new mongoose.Schema({
     default: 0
   },
   comments: {
-    type: String,
+    type: [ commentSchema ],
     required: false
   },
   views: {
     type: Number,
     default: 0
-  },
+  }
 }, {
   timestamps: true
 });

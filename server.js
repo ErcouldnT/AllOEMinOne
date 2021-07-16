@@ -5,7 +5,7 @@ const path = require('path');
 require('dotenv').config();
 const app = express();
 
-const { Product } = require('./model/Product');
+const Product = require('./model/Product');
 const Search = require('./model/Search');
 const Build = require('./model/Build');
 
@@ -34,7 +34,10 @@ const client = path.resolve('client', 'build');
 
 app.use(cors());
 app.use(express.static(client));
+app.use(express.json());
+app.enable('trust proxy');
 
+// Post search
 app.get('/api/search/:search', async (req, res, next) => {
   try {
     const { search } = req.params;
@@ -60,10 +63,69 @@ app.get('/api/search/:search', async (req, res, next) => {
   }
 });
 
+// Get product
+app.get('/api/product/:url', async (req, res, next) => {
+  try {
+    const { url } = req.params;
+    const product = await Product.findOne({ url: url });
+    if (product) {
+      res.json(product);
+    } else {
+      res.json({
+        message: "Product not found."
+      });
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Get build
+app.get('/api/build/:slug', async (req, res, next) => {
+  try {
+    const { slug } = req.params;
+    const build = await Build.findOne({ slug: slug });
+    if (build) {
+      //TODO: Don't tell pw if there is...
+      build.views += 1;
+      res.json(build);
+      build.save();
+    } else {
+      res.json({
+        owner: "Olmayan",
+        name: "Baba! Sistem yok!",
+        build: [],
+        message: "Slug not found."
+      });
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Post build
+app.post('/api/build', async (req, res, next) => {
+  try {
+    const build = new Build(req.body);
+    const isFound = await Build.findOne({ slug: build.slug });
+    if (isFound) {
+      res.json({
+        message: "Use another slug."
+      });
+    } else {
+      await build.save();
+      res.json(build);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 const SaveDB = (array) => {
   array.forEach(async p => {
     const isFound = await Product.findOne({ url: p.url });
     if (isFound) {
+      // todo img yoksa image eklesin.
       if (isFound.prices[isFound.prices.length - 1].price !== p.price) {
         isFound.prices.push({
           price: p.price
