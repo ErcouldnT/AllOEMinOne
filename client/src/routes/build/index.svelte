@@ -66,6 +66,11 @@
   {/each}
 </div>
 
+{#if share_button === 'Paylaşıldı'}
+  <a href={`/build/${link}`} class="flex flex-col justify-center items-center mt-5">Sistem {link} linkiyle paylaşılabilir.</a>
+  <a href={`/build/${link}`} class="flex flex-col justify-center items-center">{`https://bul.erkuttekoglu.com/build/${link}`}</a>
+{/if}
+
 {#if $build.length === 0}
   <div class="flex justify-center items-center">
     <p class="text-center max-w-md">
@@ -99,9 +104,3 @@
 
   </div>
 {/if}
-
-{#if share_button === 'Paylaşıldı'}
-  <a href={`/build/${link}`} class="flex flex-col justify-center items-center">Sistem {link} linkiyle paylaşılabilir.</a>
-  <a href={`/build/${link}`} class="flex flex-col justify-center items-center">{`https://bul.erkuttekoglu.com/build/${link}`}</a>
-{/if}
-
