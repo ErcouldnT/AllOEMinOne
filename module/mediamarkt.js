@@ -34,7 +34,7 @@ const mediamarkt = async (search) => {
           const product = {
             title,
             price: price.slice(0, -3),
-            url: encodeURI(`https://www.mediamarkt.com.tr/tr/product/_${e.name}-${e.attributes.modelnumber}.html`),
+            url: "https://www.mediamarkt.com.tr/tr/product/_" + `${e.name}-${e.attributes.modelnumber}.html`.toLowerCase().replace(/(\s|\/)/g, "-"),
             source: 'mediamarkt'
           }
           products.push(product);
