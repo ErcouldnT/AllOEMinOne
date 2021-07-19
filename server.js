@@ -86,10 +86,13 @@ app.get('/api/build/:slug', async (req, res, next) => {
     const { slug } = req.params;
     const build = await Build.findOne({ slug: slug.toLowerCase() });
     if (build) {
-      //TODO: Don't tell pw if there is...
       build.views += 1;
-      res.json(build);
       build.save();
+      //TODO: Don't tell pw if there is...
+      if (build.pw) {
+        delete build.pw
+      }
+      res.json(build);
     } else {
       res.json({
         owner: "Olmayan",
@@ -107,7 +110,8 @@ app.get('/api/build/:slug', async (req, res, next) => {
 app.post('/api/build', async (req, res, next) => {
   try {
     const build = new Build(req.body);
-    const isFound = await Build.findOne({ slug: build.slug.toLowerCase() });
+    build.slug = build.slug.toLowerCase();
+    const isFound = await Build.findOne({ slug: build.slug });
     if (isFound) {
       res.json({
         message: "Use another slug."

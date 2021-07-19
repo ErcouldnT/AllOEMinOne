@@ -28,7 +28,7 @@
     e.preventDefault();
     const system = {
       name,
-      slug,
+      slug: slug.toLowerCase(),
       owner,
       build: builds
     };
