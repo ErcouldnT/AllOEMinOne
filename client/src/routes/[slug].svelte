@@ -23,7 +23,7 @@
   export let slug;
 
   import { fade } from 'svelte/transition';
-  import Else from '../../lib/Build/Else.svelte';
+  import Else from '../lib/Build/Else.svelte';
 
   let builds = build.build;
   let total = 0;

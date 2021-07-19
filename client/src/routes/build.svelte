@@ -1,7 +1,7 @@
 <script>
-  import { build } from '../../stores/build';
+  import { build } from '../stores/build';
   import { fade } from 'svelte/transition';
-  import OEM from '../../lib/Build/Product.svelte';
+  import OEM from '../lib/Build/Product.svelte';
 
   let builds = $build;
   let total = 0;
@@ -41,15 +41,15 @@
       body: JSON.stringify(system)
     });
     const ok = await res.json();
-    console.log(ok);
+    // console.log(ok);
     if (ok.message) {
       share_button = 'Url değiştir.'
       slug = '';
     } else {
       share_button = 'Paylaşıldı';
       link = slug;
-      name = "";
-      owner = "";
+      name = '';
+      owner = '';
       slug = '';
     }
   };
@@ -67,8 +67,8 @@
 </div>
 
 {#if share_button === 'Paylaşıldı'}
-  <a href={`/build/${link}`} class="flex flex-col justify-center items-center mt-5">Sistem {link} linkiyle paylaşılabilir.</a>
-  <a href={`/build/${link}`} class="flex flex-col justify-center items-center">{`https://bul.erkuttekoglu.com/build/${link}`}</a>
+  <a href={`/${link}`} class="flex flex-col justify-center items-center mt-5">Sistem {link} linkiyle paylaşılabilir.</a>
+  <a href={`/${link}`} class="flex flex-col justify-center items-center">{`https://bul.erkuttekoglu.com/${link}`}</a>
 {/if}
 
 {#if $build.length === 0}
@@ -86,15 +86,15 @@
     <form class="gap-2 mt-5">
       <label class="block">
         <span class="text-gray-700">Sistem adı</span>
-        <input bind:value={name} class="form-input mt-1 block w-full border-2" placeholder="Technopat Temmuz 2021">
+        <input bind:value={name} class="form-input mt-1 block w-full border-2" placeholder=" Gıral Sistem">
       </label>
       <label class="block">
         <span class="text-gray-700">İsminiz</span>
-        <input bind:value={owner} class="form-input mt-1 block w-full border-2" placeholder="Ercode">
+        <input bind:value={owner} class="form-input mt-1 block w-full border-2" placeholder=" Ercode">
       </label>
       <label class="block">
-        <span class="text-gray-700">bul.erkuttekoglu.com/build/???</span>
-        <input bind:value={slug} class="form-input mt-1 block w-full border-2" placeholder="sistem1">
+        <span class="text-gray-700">bul.erkuttekoglu.com/?</span>
+        <input bind:value={slug} class="form-input mt-1 block w-full border-2" placeholder=" sistem1">
       </label>
       <div class="flex justify-end">
         <button on:click={handleClick} class="mt-3 items-center bg-blue-500 hover:bg-blue-700 
