@@ -84,7 +84,7 @@ app.get('/api/product/:url', async (req, res, next) => {
 app.get('/api/build/:slug', async (req, res, next) => {
   try {
     const { slug } = req.params;
-    const build = await Build.findOne({ slug: slug });
+    const build = await Build.findOne({ slug: slug.toLowerCase() });
     if (build) {
       //TODO: Don't tell pw if there is...
       build.views += 1;
@@ -107,7 +107,7 @@ app.get('/api/build/:slug', async (req, res, next) => {
 app.post('/api/build', async (req, res, next) => {
   try {
     const build = new Build(req.body);
-    const isFound = await Build.findOne({ slug: build.slug });
+    const isFound = await Build.findOne({ slug: build.slug.toLowerCase() });
     if (isFound) {
       res.json({
         message: "Use another slug."

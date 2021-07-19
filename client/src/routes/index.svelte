@@ -1,6 +1,7 @@
 <script>
   import { fade } from 'svelte/transition';
   import { result } from '../stores/result';
+  import { filter } from '../stores/filter';
   import Product from '../lib/Finder/Product.svelte';
 
   let results = $result;
@@ -13,16 +14,16 @@
   let lowestPrice = '';
   let time = 0;
   
-  let amCheck = true;
-  let itCheck = true;
-  let sinCheck = true;
-  let tbCheck = true;
-  let inCheck = true;
-  let mmCheck = true;
-  let tekCheck = true;
-  let qpCheck = true;
-  let vbCheck = false;
-  let hbCheck = false;
+  // let amCheck = true;
+  // let itCheck = true;
+  // let sinCheck = true;
+  // let tbCheck = true;
+  // let inCheck = true;
+  // let mmCheck = true;
+  // let tekCheck = true;
+  // let qpCheck = true;
+  // let vbCheck = false;
+  // let hbCheck = false;
 
   $: {
     $result = results.sort((a, b) => a.price - b.price);
@@ -115,44 +116,44 @@
     if (searchTerm) {
       results = [];
       await searchCheck(searchTerm);
-      loadingText = 'Hemen ustaya sorup geliyorum abi biraz bekleticem...'
-      if (sinCheck) {
+      // loadingText = 'Hemen ustaya sorup geliyorum abi biraz bekleticem...'
+      if ($filter.sinCheck) {
         loadingText = "Sinerji'yi arıyorum...";
         await sinerji(searchTerm);
       }
-      if (inCheck) {
+      if ($filter.inCheck) {
         loadingText = "Inventus'u arıyorum...";
         await inventus(searchTerm);
       }
-      if (mmCheck) {
+      if ($filter.mmCheck) {
         loadingText = "Mediamarkt'ı arıyorum...";
         await mediamarkt(searchTerm);
       }
-      if (qpCheck) {
+      if ($filter.qpCheck) {
         loadingText = "Qp'yi arıyorum...";
         await qp(searchTerm);
       }
-      if (tbCheck) {
+      if ($filter.tbCheck) {
         loadingText = "Teknobiyotik'i arıyorum...";
         await teknobiyotik(searchTerm);
       }
-      if (tekCheck) {
+      if ($filter.tekCheck) {
         loadingText = "Teknosa'yı arıyorum...";
         await teknosa(searchTerm);
       }
-      if (hbCheck) {
+      if ($filter.hbCheck) {
         loadingText = "Hepsiburada'yı arıyorum...";
         await hepsiburada(searchTerm);
       }
-      if (vbCheck) {
+      if ($filter.vbCheck) {
         loadingText = "Vatanbilgisayar'ı arıyorum...";
         await vatanbilgisayar(searchTerm);
       }
-      if (amCheck) {
+      if ($filter.amCheck) {
         loadingText = "Amazon'u arıyorum...";
         await amazon(searchTerm);
       }
-      if (itCheck) {
+      if ($filter.itCheck) {
         loadingText = "İtopya'yı arıyorum...";
         await itopya(searchTerm);
       }
@@ -180,43 +181,43 @@
 <div class="flex justify-center items-center p-3">
   <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
     <label class="cursor-pointer">
-      <input type=checkbox bind:checked={amCheck}>
+      <input type=checkbox bind:checked={$filter.amCheck}>
       Amazon
     </label>
     <label class="cursor-pointer">
-      <input type=checkbox bind:checked={hbCheck} disabled>
+      <input type=checkbox bind:checked={$filter.hbCheck} disabled>
       Hepsiburada
     </label>
     <label class="cursor-pointer">
-      <input type=checkbox bind:checked={itCheck}>
+      <input type=checkbox bind:checked={$filter.itCheck}>
       İtopya
     </label>
     <label class="cursor-pointer">
-      <input type=checkbox bind:checked={inCheck}>
+      <input type=checkbox bind:checked={$filter.inCheck}>
       Inventus
     </label>
     <label class="cursor-pointer">
-      <input type=checkbox bind:checked={mmCheck}>
+      <input type=checkbox bind:checked={$filter.mmCheck}>
       Mediamarkt
     </label>
     <label class="cursor-pointer">
-      <input type=checkbox bind:checked={qpCheck}>
+      <input type=checkbox bind:checked={$filter.qpCheck}>
       Qp
     </label>
     <label class="cursor-pointer">
-      <input type=checkbox bind:checked={sinCheck}>
+      <input type=checkbox bind:checked={$filter.sinCheck}>
       Sinerji
     </label>
     <label class="cursor-pointer">
-      <input type=checkbox bind:checked={tbCheck}>
+      <input type=checkbox bind:checked={$filter.tbCheck}>
       Teknobiyotik
     </label>
     <label class="cursor-pointer">
-      <input type=checkbox bind:checked={tekCheck}>
+      <input type=checkbox bind:checked={$filter.tekCheck}>
       Teknosa
     </label>
     <label class="cursor-pointer">
-      <input type=checkbox bind:checked={vbCheck} disabled>
+      <input type=checkbox bind:checked={$filter.vbCheck} disabled>
       Vatanbilgisayar
     </label>
   </div>
