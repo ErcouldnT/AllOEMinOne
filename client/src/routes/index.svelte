@@ -2,11 +2,12 @@
   import { fade } from 'svelte/transition';
   import { result } from '../stores/result';
   import { filter } from '../stores/filter';
+  import { search } from '../stores/search';
   import Product from '../lib/Finder/Product.svelte';
 
   let results = $result;
   let searchTerm = '';
-  let searchInput = '';
+  // let searchInput = '';
   let isSearching = false;
   let loadingText = '';
   // let loadingText = results.length > 0 ? `${results.length} adet ${searchTerm.trim()} var abi buyur:` : '';
@@ -112,7 +113,7 @@
       return
     }
     isSearching = true;
-    searchTerm = searchInput;
+    searchTerm = $search;
     if (searchTerm) {
       results = [];
       await searchCheck(searchTerm);
@@ -172,9 +173,9 @@
 
 <form class="flex flex-row justify-center p-4">
   <input class="w-auto rounded-md text-lg p-4 border-2 border-gray-200" 
-  type="text" bind:value={searchInput} placeholder="Ürün ara">
+  type="text" bind:value={$search} placeholder="Ürün ara">
   
-  <button on:click={handleClick} disabled={!searchInput} class="items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 
+  <button on:click={handleClick} disabled={!$search} class="items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 
   px-4 rounded">Go!</button>
 </form>
 
