@@ -42,6 +42,8 @@ MongoDB Atlas
   * [ ] n11, Trendyol, İncehesap, pttAVM, Çiçeksepeti
   * [ ] Gittigidiyor, Sahibinden
   * [ ] Aliexpress, Banggood, Gearbest, eBay
+  * [ ] Music stores
+  * [ ] Book-sellers
 
 ## Link to recent app
 > https://bul.erkuttekoglu.com \
