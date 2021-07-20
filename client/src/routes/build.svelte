@@ -86,7 +86,7 @@
     <form class="gap-2 mt-5">
       <label class="block">
         <span class="text-gray-700">Sistem adı</span>
-        <input bind:value={name} class="form-input mt-1 block w-full border-2" placeholder=" Gıral Sistem">
+        <input bind:value={name} class="form-input mt-1 block w-full border-2" placeholder=" Sistem-1">
       </label>
       <label class="block">
         <span class="text-gray-700">İsminiz</span>
