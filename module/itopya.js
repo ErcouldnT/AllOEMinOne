@@ -6,7 +6,7 @@ const Selector = require('./Selector');
 async function itopya(search) {
   const products = [];
   try {
-    const url = `https://www.itopya.com/arama/?o=far&a=${search}`;
+    const url = `https://www.itopya.com/aramaMotoruAjax.php?a=${search}`;
     puppeteer.use(StealthPlugin());
     const browser = await puppeteer.launch({
       args: [
@@ -49,4 +49,8 @@ async function itopya(search) {
   return products.sort((a, b) => a.price - b.price);
 }
 
-module.exports = itopya;
+Promise.all([itopya("ryzen 5600")]).then(results => {
+  console.log(results);
+});
+
+// module.exports = itopya;

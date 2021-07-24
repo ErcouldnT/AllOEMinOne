@@ -57,12 +57,16 @@ async function amazon(search) {
         }
       }
     });
-
+    // await page.waitForTimeout(9999 * 1000);
     await browser.close();
   } catch (error) {
     console.log(error);
   }
   return products.sort((a, b) => a.price - b.price);
 }
+
+// Promise.all([amazon("msi mpg b550 gaming edge")]).then(results => {
+//   console.log(results);
+// });
 
 module.exports = amazon;

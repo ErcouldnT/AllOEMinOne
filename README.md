@@ -39,9 +39,10 @@ MongoDB Atlas
 
 ## What else can be added
   * [x] Qpbilişim
-  * [ ] n11, Trendyol, İncehesap, pttAVM, Çiçeksepeti
+  * [ ] Akakçe, Cimri
   * [ ] Gittigidiyor, Sahibinden
   * [ ] Aliexpress, Banggood, Gearbest, eBay
+  * [ ] n11, Trendyol, İncehesap, pttAVM, Çiçeksepeti
   * [ ] Music stores
   * [ ] Book-sellers
 
