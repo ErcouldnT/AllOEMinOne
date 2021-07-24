@@ -129,13 +129,15 @@ const SaveDB = (array) => {
   array.forEach(async p => {
     const isFound = await Product.findOne({ url: p.url });
     if (isFound) {
-      // todo img yoksa image eklesin.
+      if (!isFound.img && p.img) {
+        isFound.img = p.img;
+      }
       if (isFound.prices[isFound.prices.length - 1].price !== p.price) {
         isFound.prices.push({
           price: p.price
         });
-        await isFound.save();
       }
+      await isFound.save();
       return
     } else {
       const product = new Product(p);
