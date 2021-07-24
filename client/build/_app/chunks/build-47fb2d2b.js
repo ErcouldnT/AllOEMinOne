@@ -1,1 +1,0 @@
-import{C as e}from"./vendor-b54fc800.js";const o=e("undefined"!=typeof localStorage?JSON.parse(localStorage.getItem("build")?localStorage.getItem("build"):"[]"):[]);"undefined"!=typeof localStorage&&o.subscribe((e=>localStorage.setItem("build",JSON.stringify(e))));export{o as b};

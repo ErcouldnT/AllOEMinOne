@@ -35,6 +35,10 @@ const buildProductSchema = new mongoose.Schema({
   source: {
     type: String,
     required: true
+  },
+  amount: {
+    type: Number,
+    default: 1
   }
 });
 
@@ -48,10 +52,14 @@ const buildSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
-  disc: {
+  desc: {
     type: String,
     required: false
   },
+  // total: {
+  //   type: Number,
+  //   required: false
+  // },
   owner: {
     type: String,
     required: true
