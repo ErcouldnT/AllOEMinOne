@@ -125,6 +125,19 @@ app.post('/api/build', async (req, res, next) => {
   }
 });
 
+// Show latest ready-systems
+app.get('/api/system/latest', async (req, res, next) => {
+  try {
+    const systems = await Build.find();
+    if (systems) {
+      // todo don't send pw!
+      res.json(systems.reverse());
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 const SaveDB = (array) => {
   array.forEach(async p => {
     const isFound = await Product.findOne({ url: p.url });

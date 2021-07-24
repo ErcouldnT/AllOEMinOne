@@ -48,6 +48,10 @@ const buildSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
+  disc: {
+    type: String,
+    required: false
+  },
   owner: {
     type: String,
     required: true
