@@ -10,9 +10,18 @@
     $build = result;
 	};
 
+  // if (!product.amount) {
+  //   product.amount = 1;
+  // }
+
   const quantityControl = (e) => {
     e.preventDefault();
-		// todo
+    product.amount += 1;
+    for (let i = 0; i < $build.length; i++) {
+      if ($build[i] === product.title) {
+        $build[i].amount = $build[i].amount + 1;
+      }
+    }
 	};
 
 </script>
@@ -22,7 +31,7 @@ flex flex-col items-center z-0" href={product.url}>
   <h2>{`(${product.source}) ${product.title}`}</h2>
   <h3>₺{product.price}</h3>
   <div class="flex gap-10">
-    <button on:click={quantityControl} class="font-bold z-10">Miktar</button>
+    <button on:click={quantityControl} class="font-bold z-10">Miktar: {product.amount}</button>
     <button on:click={deleteIt} class="font-bold z-10">Sil</button>
   </div>
 </a>

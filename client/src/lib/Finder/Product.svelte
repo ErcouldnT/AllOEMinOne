@@ -13,6 +13,8 @@
 
   const sendItToBuild = (e) => {
     e.preventDefault();
+    // todo zaten varsa yenisini ekleme, varolanın miktarını artır.
+    product.amount = 1;
 		builds.push(product);
     isChoosed = true;
 	};

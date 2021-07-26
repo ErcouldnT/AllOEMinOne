@@ -13,7 +13,7 @@
     total = 0;
     for (let i = 0; i < $build.length; i++) {
       const e = $build[i];
-      total += Number(e.price);
+      total = total + e.amount * Number(e.price);
     };
   }
 
