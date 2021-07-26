@@ -10,9 +10,9 @@
     $build = result;
 	};
 
-  // if (!product.amount) {
-  //   product.amount = 1;
-  // }
+  if (!product.amount) {
+    product.amount = 1;
+  }
 
   const quantityControl = (e) => {
     e.preventDefault();
