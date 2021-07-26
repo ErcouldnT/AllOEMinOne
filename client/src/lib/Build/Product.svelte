@@ -12,6 +12,11 @@
 
   if (!product.amount) {
     product.amount = 1;
+    for (let i = 0; i < $build.length; i++) {
+      if ($build[i] === product.title) {
+        $build[i].amount = 1;
+      }
+    }
   }
 
   const quantityControl = (e) => {
