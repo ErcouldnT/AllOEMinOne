@@ -39,12 +39,13 @@ MongoDB Atlas
 
 ## What else can be added
   * [x] Qpbilişim
-  * [ ] Akakçe, Cimri
+  * [ ] Akakçe, Cimri, Epey.com
   * [ ] Gittigidiyor, Sahibinden
   * [ ] Aliexpress, Banggood, Gearbest, eBay
   * [ ] n11, Trendyol, İncehesap, pttAVM, Çiçeksepeti
   * [ ] Music stores
   * [ ] Book-sellers
+  * [ ] Decathlon.com.tr
 
 ## Link to recent app
 > https://bul.erkuttekoglu.com \
