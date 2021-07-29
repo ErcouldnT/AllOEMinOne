@@ -31,6 +31,15 @@
     // console.log($result);
   }
 
+  const n11 = async (search) => {
+    const url = `/api/n11/${search}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    if (isSearching) {
+      results = results.concat(data);
+    }
+  };
+
   const qp = async (search) => {
     const url = `/api/qp/${search}`;
     const res = await fetch(url);
@@ -183,6 +192,10 @@
         loadingText = "İtopya'yı arıyorum...";
         await itopya(searchTerm);
       }
+      if ($filter.n11Check && isSearching) {
+        loadingText = "n11'i arıyorum...";
+        await n11(searchTerm);
+      }
       loadingText = results.length > 0 ? `${results.length} adet ${searchTerm.trim()} var abi buyur:` : 'Abime onu vermiyim.';
       isSearching = false;
     };
@@ -221,7 +234,7 @@
       Amazon
     </label>
     <label class="cursor-pointer">
-      <input type=checkbox bind:checked={$filter.hbCheck} disabled>
+      <input type=checkbox bind:checked={$filter.hbCheck}>
       Hepsiburada
     </label>
     <label class="cursor-pointer">
@@ -235,6 +248,10 @@
     <label class="cursor-pointer">
       <input type=checkbox bind:checked={$filter.mmCheck}>
       Mediamarkt
+    </label>
+    <label class="cursor-pointer">
+      <input type=checkbox bind:checked={$filter.n11Check}>
+      n11
     </label>
     <label class="cursor-pointer">
       <input type=checkbox bind:checked={$filter.qpCheck}>
@@ -253,7 +270,7 @@
       Teknosa
     </label>
     <label class="cursor-pointer">
-      <input type=checkbox bind:checked={$filter.vbCheck} disabled>
+      <input type=checkbox bind:checked={$filter.vbCheck}>
       Vatanbilgisayar
     </label>
   </div>

@@ -29,6 +29,7 @@ const teknobiyotik = require('./module/teknobiyotik');
 const teknosa = require('./module/teknosa');
 const vatanbilgisayar = require('./module/vatanbilgisayar');
 const qp = require('./module/qp');
+const n11 = require('./module/n11');
 
 const client = path.resolve('client', 'build');
 
@@ -266,6 +267,17 @@ app.get('/api/vatanbilgisayar/:search', async (req, res, next) => {
   try {
     const { search } = req.params;
     const results = await vatanbilgisayar(search);
+    res.json(results);
+    SaveDB(results);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get('/api/n11/:search', async (req, res, next) => {
+  try {
+    const { search } = req.params;
+    const results = await n11(search);
     res.json(results);
     SaveDB(results);
   } catch (error) {

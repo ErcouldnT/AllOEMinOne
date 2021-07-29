@@ -8,7 +8,7 @@ export const filter = writable(
       ? JSON.parse(localStorage.getItem('filter'))
       : {
         amCheck: true,
-        itCheck: true,
+        itCheck: false,
         sinCheck: true,
         tbCheck: true,
         inCheck: true,
@@ -17,6 +17,7 @@ export const filter = writable(
         qpCheck: true,
         vbCheck: false,
         hbCheck: false,
+        n11Check: true,
       }
   : {}
 );
