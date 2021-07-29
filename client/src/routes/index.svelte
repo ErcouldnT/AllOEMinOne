@@ -31,6 +31,42 @@
     // console.log($result);
   }
 
+  const incehesap = async (search) => {
+    const url = `/api/incehesap/${search}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    if (isSearching) {
+      results = results.concat(data);
+    }
+  };
+
+  const trendyol = async (search) => {
+    const url = `/api/trendyol/${search}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    if (isSearching) {
+      results = results.concat(data);
+    }
+  };
+
+  const pttavm = async (search) => {
+    const url = `/api/pttavm/${search}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    if (isSearching) {
+      results = results.concat(data);
+    }
+  };
+
+  const ciceksepeti = async (search) => {
+    const url = `/api/ciceksepeti/${search}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    if (isSearching) {
+      results = results.concat(data);
+    }
+  };
+
   const n11 = async (search) => {
     const url = `/api/n11/${search}`;
     const res = await fetch(url);
@@ -196,6 +232,22 @@
         loadingText = "n11'i arıyorum...";
         await n11(searchTerm);
       }
+      if ($filter.ihesapCheck && isSearching) {
+        loadingText = "İncehesap'ı arıyorum...";
+        await incehesap(searchTerm);
+      }
+      if ($filter.tyolCheck && isSearching) {
+        loadingText = "Trendyol'u arıyorum...";
+        await trendyol(searchTerm);
+      }
+      if ($filter.pttCheck && isSearching) {
+        loadingText = "pttAVM'yi arıyorum...";
+        await pttavm(searchTerm);
+      }
+      if ($filter.cicekCheck && isSearching) {
+        loadingText = "Çiçeksepeti'ni arıyorum...";
+        await ciceksepeti(searchTerm);
+      }
       loadingText = results.length > 0 ? `${results.length} adet ${searchTerm.trim()} var abi buyur:` : 'Abime onu vermiyim.';
       isSearching = false;
     };
@@ -234,16 +286,24 @@
       Amazon
     </label>
     <label class="cursor-pointer">
+      <input type=checkbox bind:checked={$filter.cicekCheck}>
+      Çiçeksepeti
+    </label>
+    <label class="cursor-pointer">
       <input type=checkbox bind:checked={$filter.hbCheck}>
       Hepsiburada
     </label>
     <label class="cursor-pointer">
-      <input type=checkbox bind:checked={$filter.itCheck}>
-      İtopya
-    </label>
-    <label class="cursor-pointer">
       <input type=checkbox bind:checked={$filter.inCheck}>
       Inventus
+    </label>
+    <label class="cursor-pointer">
+      <input type=checkbox bind:checked={$filter.ihesapCheck}>
+      İncehesap
+    </label>
+    <label class="cursor-pointer">
+      <input type=checkbox bind:checked={$filter.itCheck}>
+      İtopya
     </label>
     <label class="cursor-pointer">
       <input type=checkbox bind:checked={$filter.mmCheck}>
@@ -258,12 +318,20 @@
       Qp
     </label>
     <label class="cursor-pointer">
+      <input type=checkbox bind:checked={$filter.pttCheck}>
+      pttAVM
+    </label>
+    <label class="cursor-pointer">
       <input type=checkbox bind:checked={$filter.sinCheck}>
       Sinerji
     </label>
     <label class="cursor-pointer">
       <input type=checkbox bind:checked={$filter.tbCheck}>
       Teknobiyotik
+    </label>
+    <label class="cursor-pointer">
+      <input type=checkbox bind:checked={$filter.tyolCheck}>
+      Trendyol
     </label>
     <label class="cursor-pointer">
       <input type=checkbox bind:checked={$filter.tekCheck}>

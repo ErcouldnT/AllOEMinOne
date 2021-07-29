@@ -42,7 +42,7 @@ MongoDB Atlas
   * [ ] Akakçe, Cimri, Epey.com
   * [ ] Gittigidiyor, Sahibinden
   * [ ] Aliexpress, Banggood, Gearbest, eBay
-  * [ ] n11, Trendyol, İncehesap, pttAVM, Çiçeksepeti
+  * [x] n11, Trendyol, İncehesap, pttAVM, Çiçeksepeti
   * [ ] Music stores
   * [ ] Book-sellers
   * [ ] Decathlon.com.tr

@@ -9,7 +9,7 @@ const Product = require('./model/Product');
 const Search = require('./model/Search');
 const Build = require('./model/Build');
 
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.NODE_ENV === "production" ? process.env.MONGO_URI : process.env.MONGO_DEV, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -30,6 +30,10 @@ const teknosa = require('./module/teknosa');
 const vatanbilgisayar = require('./module/vatanbilgisayar');
 const qp = require('./module/qp');
 const n11 = require('./module/n11');
+const incehesap = require('./module/incehesap');
+const trendyol = require('./module/trendyol');
+const pttavm = require('./module/pttavm');
+const ciceksepeti = require('./module/ciceksepeti');
 
 const client = path.resolve('client', 'build');
 
@@ -66,6 +70,7 @@ app.get('/api/search/:search', async (req, res, next) => {
 
 // Get product
 app.get('/api/product/:url', async (req, res, next) => {
+  // todo make it "title" & "source" check.
   try {
     const { url } = req.params;
     const product = await Product.findOne({ url: url });
@@ -141,8 +146,12 @@ app.get('/api/system/latest', async (req, res, next) => {
 
 const SaveDB = (array) => {
   array.forEach(async p => {
-    const isFound = await Product.findOne({ url: p.url });
+    const isFound = await Product.findOne({
+      title: p.title,
+      source: p.source
+    });
     if (isFound) {
+      // console.log("Product is found: " + isFound.title);
       if (!isFound.img && p.img) {
         isFound.img = p.img;
       }
@@ -278,6 +287,50 @@ app.get('/api/n11/:search', async (req, res, next) => {
   try {
     const { search } = req.params;
     const results = await n11(search);
+    res.json(results);
+    SaveDB(results);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get('/api/incehesap/:search', async (req, res, next) => {
+  try {
+    const { search } = req.params;
+    const results = await incehesap(search);
+    res.json(results);
+    SaveDB(results);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get('/api/trendyol/:search', async (req, res, next) => {
+  try {
+    const { search } = req.params;
+    const results = await trendyol(search);
+    res.json(results);
+    SaveDB(results);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get('/api/pttavm/:search', async (req, res, next) => {
+  try {
+    const { search } = req.params;
+    const results = await pttavm(search);
+    res.json(results);
+    SaveDB(results);
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get('/api/ciceksepeti/:search', async (req, res, next) => {
+  try {
+    const { search } = req.params;
+    const results = await ciceksepeti(search);
     res.json(results);
     SaveDB(results);
   } catch (error) {

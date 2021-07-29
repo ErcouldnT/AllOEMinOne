@@ -18,6 +18,10 @@ export const filter = writable(
         vbCheck: false,
         hbCheck: false,
         n11Check: true,
+        ihesapCheck: true,
+        tyolCheck: true,
+        pttCheck: true,
+        cicekCheck: true,
       }
   : {}
 );
