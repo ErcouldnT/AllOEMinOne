@@ -30,7 +30,7 @@ const trendyol = async (search) => {
         if (isTitleValid) {
           const product = {
             title,
-            price: $price.slice(0, -6).replace(".", ""),
+            price: $price.split(",")[0].replace(".", ""),
             url: `https://www.trendyol.com${$element.find('a').attr('href')}`.split("?")[0],
             // todo img: you need to use puppeteer to get lazy data.
             // img: $element.find('img').attr('src'),
