@@ -38,7 +38,6 @@ MongoDB Atlas
   * [x] System build section which can be shared with a single url.
 
 ## What else can be added
-  * [x] Qpbilişim
   * [ ] Akakçe, Cimri, Epey.com
   * [ ] Gittigidiyor, Sahibinden
   * [ ] Aliexpress, Banggood, Gearbest, eBay
