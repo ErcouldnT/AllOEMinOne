@@ -70,7 +70,7 @@ app.get('/api/search/:search', async (req, res, next) => {
 
 // Get product
 app.get('/api/product/:url', async (req, res, next) => {
-  // todo make it "title" & "source" check.
+  // todo make it "title" & "source" check. no it's not ideal.
   try {
     const { url } = req.params;
     const product = await Product.findOne({ url: url });
@@ -147,8 +147,7 @@ app.get('/api/system/latest', async (req, res, next) => {
 const SaveDB = (array) => {
   array.forEach(async p => {
     const isFound = await Product.findOne({
-      title: p.title,
-      source: p.source
+      url: p.url
     });
     if (isFound) {
       // console.log("Product is found: " + isFound.title);
