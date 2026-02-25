@@ -1,53 +1,73 @@
 # AllOEMinOne
-Find a cheapest OEM in Turkey at lightning speed. 
 
-## How it works?
-Just go to https://bul.erkuttekoglu.com and Boom!
-> *Note that it's a free dyno so wait a bit.*
+Find the cheapest OEM parts in Turkey at lightning speed! 🚀
 
-## Used technologies:
-### Backend
-> Express \
-Axios \
-Cheerio \
-Puppeteer \
-Cors \
-Dotenv \
-Mongoose
+## Tech Stack
 
-### Frontend
-> Vite \
-Svelte \
-SvelteKit \
-Tailwind CSS \
-Nanoid
+| Category | Technology |
+|---|---|
+| Framework | SvelteKit 5 (Svelte 5, Runes) |
+| Adapter | @sveltejs/adapter-node |
+| Language | TypeScript |
+| Styling | TailwindCSS 4 + DaisyUI 5 |
+| Database | Drizzle ORM + SQLite (better-sqlite3) |
+| Scrapers | Axios, Cheerio, Puppeteer (with Stealth Plugin) |
+| Icons | @lucide/svelte |
+| Linting | ESLint (@antfu/eslint-config) |
+| Git Hooks | Husky + lint-staged |
+| Deployment | Docker (multi-stage build) |
 
-### Development
-> Nodemon \
-> MongoDB Compass
+## Getting Started
 
-### Production
-> Heroku \
-Cloudflare \
-MongoDB Atlas
+```bash
+# Install dependencies
+npm install
 
-## Todo
-  * [ ] Add product images.
-  * [x] Crazy product database.
-  * [ ] More beautiful Product div & Search bar.
-  * [x] System build section which can be shared with a single url.
+# Create / push database schema
+npm run db:push
 
-## What else can be added
-  * [ ] Akakçe, Cimri, Epey.com
-  * [ ] Gittigidiyor, Sahibinden
-  * [ ] Aliexpress, Banggood, Gearbest, eBay
-  * [x] n11, Trendyol, İncehesap, pttAVM, Çiçeksepeti
-  * [ ] Music stores
-  * [ ] Book-sellers
-  * [ ] Decathlon.com.tr
+# Start dev server
+npm run dev
+```
 
-## Link to recent app
-> https://bul.erkuttekoglu.com \
-> *Note that it's a free dyno so wait a bit.*
+## Scripts
 
-&copy; 2021 Ercode
+| Script | Description |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run check` | Run svelte-check |
+| `npm run lint` | Lint & auto-fix with ESLint |
+| `npm run db:push` | Push Drizzle schema to SQLite |
+| `npm run db:studio` | Open Drizzle Studio (DB GUI) |
+
+## Docker
+
+```bash
+docker compose up -d
+```
+
+The app will be available at `http://localhost:3000`.
+
+## Features
+
+- 🔍 Search across 15 different stores simultaneously
+- 🖥️ Build & share custom PC configurations
+- 🌗 Dark / Light theme support (DaisyUI)
+- 📱 Fully responsive design (mobile-first)
+- 🐳 Docker-ready with multi-stage build
+- 💾 SQLite database with price history tracking
+- ⚡ Server-side rendering with SvelteKit
+
+## Supported Stores
+
+Amazon · Çiçeksepeti · Hepsiburada · Inventus · İncehesap · İtopya · Mediamarkt · n11 · QP · pttAVM · Sinerji · Teknobiyotik · Teknosa · Trendyol · Vatanbilgisayar
+
+## License
+
+[GPL-3.0](LICENSE)
+
+---
+
+© [Ercode](https://github.com/ErcouldnT)

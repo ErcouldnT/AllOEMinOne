@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+@plugin 'daisyui' {
+	themes: sunset, emerald;
+}
+
+:root {
+	font-family: 'Inter', sans-serif;
+}
+
+/* Smooth transitions for theme changes */
+html {
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: oklch(var(--b2));
+}
+
+::-webkit-scrollbar-thumb {
+	background: oklch(var(--p));
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: oklch(var(--pf));
+}

@@ -1,40 +1,50 @@
 {
-  "name": "all-oem-in-one",
-  "version": "1.0.0",
-  "description": "Find a cheapest OEM in Turkey in lightning speed.",
-  "engines": {
-    "node": "16.x"
-  },
-  "main": "server.js",
-  "scripts": {
-    "dev": "cd client && npm run build && cd .. && nodemon server",
-    "start": "node server"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ErcouldnT/AllOEMinOne.git"
-  },
-  "keywords": [
-    "svelte",
-    "express"
-  ],
-  "author": "Ercode",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/ErcouldnT/AllOEMinOne/issues"
-  },
-  "homepage": "https://github.com/ErcouldnT/AllOEMinOne#readme",
-  "dependencies": {
-    "axios": "^0.21.1",
-    "cheerio": "^1.0.0-rc.10",
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.13.2",
-    "puppeteer-extra": "^3.1.18",
-    "puppeteer-extra-plugin-stealth": "^2.7.8"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.7"
-  }
+	"name": "alloeminone",
+	"type": "module",
+	"version": "2.0.0",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "husky",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "eslint . --fix",
+		"db:push": "drizzle-kit push",
+		"db:studio": "drizzle-kit studio"
+	},
+	"dependencies": {
+		"@lucide/svelte": "^0.575.0",
+		"@sveltejs/adapter-node": "^5.5.3",
+		"axios": "^1.13.5",
+		"better-sqlite3": "^12.6.2",
+		"cheerio": "^1.2.0",
+		"drizzle-orm": "^0.45.1",
+		"puppeteer": "^24.37.5",
+		"puppeteer-extra": "^3.3.6",
+		"puppeteer-extra-plugin-stealth": "^2.11.2"
+	},
+	"devDependencies": {
+		"@antfu/eslint-config": "^7.6.1",
+		"@sveltejs/kit": "^2.50.2",
+		"@sveltejs/vite-plugin-svelte": "^6.2.4",
+		"@tailwindcss/vite": "^4.2.1",
+		"@types/better-sqlite3": "^7.6.13",
+		"daisyui": "^5.5.19",
+		"drizzle-kit": "^0.31.9",
+		"eslint": "^9.39.3",
+		"eslint-plugin-format": "^2.0.1",
+		"eslint-plugin-svelte": "^3.15.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.2.7",
+		"svelte": "^5.51.0",
+		"svelte-check": "^4.3.6",
+		"tailwindcss": "^4.2.1",
+		"typescript": "^5.9.3",
+		"vite": "^7.3.1"
+	},
+	"lint-staged": {
+		"*.{js,ts,svelte}": "eslint --fix"
+	}
 }

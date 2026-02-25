@@ -1,0 +1,13 @@
+services:
+  app:
+    build: .
+    container_name: alloeminone
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./data:/app/data
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - ORIGIN=http://localhost:3000
+    restart: unless-stopped
